@@ -1,37 +1,30 @@
 <?php
  
-function sayHello(){
-    var_dump('Hello');
-}
+class box {
+    public $height;
+    public $width;
+    public $lenght;
 
-sayHello();
-
-Function sayHelloToMe($name='Nameless'){
-      var_dump("Hello $name!");
-}
-
-sayHelloToMe('tanel');
-sayHelloToMe('devin');
-sayHelloToMe('peeterl');
-
-function sayNameandAge($name, $age){
-    var_dump("Your NAme IS $name and your are $age years old");
-
-}
-
-
-sayNameandage('tanel',19);
-sayNameandage('devin unc',100_000_000);
-
-function recursion($i){
-    if($i<10){
-        var_dump($i);
-        recursion($i+1);
+    public function volume (){
+        return $this->height * $this->width * $this->lenght;
     }
 }
 
+$box1 = new box();
+$box1->height = 10;
+$box1->lenght = 10;
+$box1->width = 10;
+$volume = $box1->volume();
+var_dump($box1);
+var_dump($volume);
+var_dump($box1->volume());
 
-recursion(0);
-
+$box2 = new box ();
+$box2->height = 50;
+$box2->lenght = 60;
+$box2->width = 40;
+$volume = $box2->volume();
+var_dump($box2);
+var_dump($box1);
 
 
