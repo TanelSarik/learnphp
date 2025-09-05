@@ -8,7 +8,7 @@ if($num > 5) {
      var_dump('smaller then 5');
 }
 
-$day = (int) date('N', strtotime('04.09.2025'));
+$day = (int) date('N');
 var_dump($day);
 
 if($day ==1) {
@@ -27,7 +27,10 @@ if($day ==1) {
 }  else if ($days == 6);
 {    
     var_dump('lauppäev');
-}  else if ($days == 7);
+}  else if ($days == 7); {
+    var_dump('pühapäev');
+}
+    
 
 
 switch($day) {
@@ -52,6 +55,8 @@ switch($day) {
      case 7:
          var_dump('pühapäev');   
      break;
+    default:
+     var_dump('imelik päev');
 }
    
 
