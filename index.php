@@ -1,14 +1,23 @@
 <?php
  
 class box {
-    public $height;
-    public $width;
-    public $lenght;
+    public $height = 0;
+    private $width = 0;
+    public $lenght = 0;
 
     public function __construct($height=0,$width=10,$lenght=0) {
         $this->height = $height;
         $this->width = $width;
         $this->height = $height;
+    }
+
+    public function setwidth($width){
+        if(is_numeric($width) && $width > 0){
+            $this->width = $width;
+        }   else{
+            throw new exception('Height needs to be number and bigger than 0');
+        }
+        
     }
 
     public function volume (){
@@ -17,6 +26,7 @@ class box {
 }
 
 $box1 = new box(10, 10, 10);
+$box1->setWidth(20);
 $volume = $box1->volume();
 var_dump($box1);
 var_dump($volume);
