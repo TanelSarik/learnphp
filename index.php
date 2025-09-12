@@ -13,6 +13,7 @@ public static function cool(){
 }
 
     public function __construct($height=0,$width=10,$lenght=0) {
+        self::$count++;
         $this->height = $height;
         $this->width = $width;
         $this->height = $height;
