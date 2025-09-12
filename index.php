@@ -4,6 +4,13 @@ class box {
     public $height = 0;
     private $width = 0;
     protected $lenght = 0;
+    
+public static $count = 0;
+
+public static function cool(){
+    var_dump(self::$count);
+    var_dump(static::class);
+}
 
     public function __construct($height=0,$width=10,$lenght=0) {
         $this->height = $height;
@@ -46,9 +53,15 @@ class IronBox extends MetalBox {
     public $weightPerUnit = 3;
 }
 
-$metalBox = new MetalBox(10, 20 ,40);
-var_dump($MetalBox);
-var_dump($MetalBox->volume());
-var_dump($metalBox->mass());
+ box::$count = 1;
+var_dump($box1::$count);
 
+box::$count = 2;
+var_dump(box::$count);
 
+var_dump(box::$count);
+var_dump(Metalbox::$count);
+var_dump(Box::class);
+Box::cool();
+
+MetalBox::cool();
