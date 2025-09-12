@@ -80,9 +80,28 @@ class MetalBox extends box {
 }
 
 class IronBox extends MetalBox {
+       use Colorful; 
+
+
     public $material = 'Iron';
     public $weightPerUnit = 3;
 }
+class Cat{
+    use Colorful, Smelly;
+}
+
+trait Colorful {
+    public $color;
+
+    public function setColor(){
+        $this->color = $color;
+    }
+} 
+
+trait Smelly {
+    public $smell;
+}
+
 
 function makeBox(){
     
