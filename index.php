@@ -25,16 +25,23 @@ class box {
     }
 }
 
-$box1 = new box(10, 10, 10);
-$box1->setWidth(20);
-$volume = $box1->volume();
-var_dump($box1);
-var_dump($volume);
-var_dump($box1->volume());
+class MetalBox extends box {
+      public $material = 'Metal';
+      public $weightPerUnit = 2;
 
-$box2 = new box (30, 40 ,50 );
-$volume = $box2->volume();
-var_dump($box2);
-var_dump($box1);
+      public function mass(){
+        return $this->volume() * $this->weightPerUnit;
+      }
+}
+
+class IronBox extends MetalBox {
+    public $material = 'Iron';
+    public $weightPerUnit = 3;
+}
+
+$metalBox = new MetalBox(10, 20 ,40);
+var_dump($MetalBox);
+var_dump($MetalBox->volume());
+var_dump($metalBox->mass());
 
 
