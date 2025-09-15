@@ -5,53 +5,30 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
     return false;    // serve the requested resource as-is.
 }
 
-function dump(...$args){
-    echo '<pre';
-    var_dump(...$args);
-    echo '</pre';
-}
-
+require __DIR__ . '/../helpers.php';
 
 spl_autoload_register(function ($class) {
        $class = substr($class, 4);
        require_once __DIR__ . "/../src/$class.php";
 });
 
-
-// require_once __DIR__ . '/../src/Router.php';
-// require_once __DIR__ . '/../src/DB.php';
-
-use App\Controllers\PublicController as PC;
-
-$router = new App\Router();
-dump($router);
-$db = new App\DB();
-dump($db);
-$controller = New PC();
-dump($controller);
+require __DIR__ . '/../routes.php';
 
 
-// switch($_SERVER['REQUEST_URI']) {
-//     case '/':
-//         $title = 'world news';
-//   $posts = [
-//     [ 'title' => 'world news 1', 'author' => 'Pets', 'published'=>'11s.09.2025', 'body ' => 'some world news 1 body'],
-//     [ 'title' => 'world news 2', 'author' => 'anns', 'published'=>'12.09.2025', 'body ' => 'some world news 2 body'],
-//     [ 'title' => 'world news 3', 'author' => 'maalis', 'published'=>'10.09.2025', 'body ' => 'some world news 3 body'],
-//     [ 'title' => 'world news 4', 'author' => 'mats', 'published'=>'13.09.2025', 'body ' => 'some world news 4 body'],
-//   ];
-//         include __DIR__ . '/../views/index.php';
-//         break;
-//         case '/us':
-//             $title = 'us news';
-//   $posts = [
-//     [ 'title' => 'us news 1', 'author' => 'Pets', 'published'=>'11s.09.2025', 'body ' => 'some world news 1 body'],
-//     [ 'title' => 'us news 2', 'author' => 'anns', 'published'=>'12.09.2025', 'body ' => 'some world news 2 body'],
-//     [ 'title' => 'us news 3', 'author' => 'maalis', 'published'=>'10.09.2025', 'body ' => 'some world news 3 body'],
-//     [ 'title' => 'us news 4', 'author' => 'mats', 'published'=>'13.09.2025', 'body ' => 'some world news 4 body'],
-//   ];
+$router = new App\Router($_SERVER['REQUEST_URI']);
+$match = $router->match();
+if($match){
+    if(is_callable($match['action'])){
+        call_user_func($match['action']);
+    } else if (is_array($match['action'])){
+        $className =  $match ['action'][0];
+        $controller = new $className();
+        $method = $match ['action'][1];
+        $controller->$method();
+    }
+  
+} else {
+    echo '404 page not found';
+}
 
-//             include __DIR__ . '/../views/index.php';
-//            break;
-//            default:echo '404 page ont found'; 
-// }
+
