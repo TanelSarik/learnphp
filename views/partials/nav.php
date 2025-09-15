@@ -68,7 +68,7 @@
             >World</a
           >
           <a class="nav-item nav-link link-body-emphasis" href="/us">U.S.</a>
-          <a class="nav-item nav-link link-body-emphasis" href="#"
+          <a class="nav-item nav-link link-body-emphasis" href="/tech"
             >Technology</a
           >
           <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
