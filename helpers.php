@@ -2,9 +2,14 @@
 
 
 function dump(...$args){
-    echo '<pre';
+    echo '<pre>';
     var_dump(...$args);
-    echo '</pre';
+    echo '</pre>';
+}
+
+function dd(...$args) {
+    dump(...$args);
+    die;
 }
 
 function view($viewName, $variables=[]) {
