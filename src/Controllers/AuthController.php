@@ -18,7 +18,7 @@ class AuthController {
         } 
         $user = new User();
         $user->email = $_POST['email'];
-        $user->password = password_verify($_POST['password']);
+        $user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $user->save();
         header('Location: /login');
 
