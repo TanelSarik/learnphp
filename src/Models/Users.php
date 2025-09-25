@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-class User extends Model {
+class Users extends Model {
     public static $table = 'users';
-    public $ids;
+
+    public $id;
+    public $name;
     public $email;
     public $password;
 }

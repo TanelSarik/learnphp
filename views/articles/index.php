@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/../partials/header.php'; ?>
 <main class="container">
-    <a href="/articles/create" class="btn btn-primary"> New article</a>
+    <a href="//create" class="btn btn-primary"> New article</a>
     <table class="table table-striped table-hover">
         <thead>
             <th>ID</th>
